@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var cluster = require('cluster');
+var fs = require('fs');
+var lockFile = require('lockfile');
+
+var version = require('../package.json').version;
+var numCPUs = require('os').cpus().length;
+
+program.version(version);
+
+program
+    .command('start <file>')
+    .description('start xxx.js')
+    .option("-m, --max_restarts <n>", "the max value of restart times.",parseInt,10)
+    .option("-n, --num_of_worker <n>", "the number of worker process be forked.",parseInt,numCPUs)
+    .action(function(file, options){
+        var max = options.max;
+        console.log(file, max);
+    });
+
+program
+    .command('restart <>')
+    .alias('re')
+    .description('execute the given remote cmd')
+    .option("-e, --exec_mode <mode>", "Which exec mode to use")
+    .action(function(cmd, options){
+        console.log('exec "%s" using %s mode', cmd, options.exec_mode);
+    }).on('--help', function() {
+        console.log('  Examples:');
+        console.log();
+        console.log('    $ deploy exec sequential');
+        console.log('    $ deploy exec async');
+        console.log();
+    });
+
+
+program.parse(process.argv);

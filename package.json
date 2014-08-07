@@ -1,0 +1,33 @@
+{
+  "name": "node-process-daemon",
+  "version": "0.0.0",
+  "description": "a daemon process wrap node cluster,like forever or pm2 ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/morningzhang/node-process-daemon"
+  },
+  "dependencies": {
+    "winston": "",
+    "lockfile":"0.4.2",
+    "commander":""
+},
+ "bin": {
+    "daemon": "./bin/daemon"
+},
+
+  "keywords": [
+    "process",
+    "daemon",
+    "cluster"
+  ],
+  "author": "morningzhang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/morningzhang/node-process-daemon/issues"
+  },
+  "homepage": "https://github.com/morningzhang/node-process-daemon"
+}
